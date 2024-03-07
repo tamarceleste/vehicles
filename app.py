@@ -11,7 +11,7 @@ if hist_button: # al hacer clic en el botón
             
     # crear un histograma
   
-    fig = px.histogram(car_data, x="marca", y="price", histfunc='avg')
+    fig = px.histogram(car_data, x="model", y="price", histfunc='avg')
     fig.show()
         
     # mostrar un gráfico Plotly interactivo
