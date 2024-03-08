@@ -8,28 +8,27 @@ hist_button = st.button('Construir histograma') # crear un botón
         
 if hist_button: # al hacer clic en el botón
     # escribir un mensaje
-    st.write('Creación de un histograma para el precio promedio de cada marca de auto')
+    st.write('Creación de un histograma para la distribución de año del modelo')
             
     # crear un histograma
   
-    fig = px.histogram(car_data, x="model_year",title="Distribución de modelos de los autos</b><br><sup>Autos enlistados</sup>")
-    fig.update_xaxes(title_text="")
-    fig.update_yaxes(title_text="")
+    fig = px.histogram(car_data, x="model_year",color="fuel",title="Distribución de año de modelos enlistados</b><br><sup>Según tipo de combustible</sup>")
+    fig.update_xaxes(title_text="Año del modelo")
+    fig.update_yaxes(title_text="Cantidad de autos")
     fig.show()
         
     # mostrar un gráfico Plotly interactivo
     st.plotly_chart(fig, use_container_width=True)
 
-prices=car_data.pivot_table(index="marca", columns="model",values="price", aggfunc="mean")
-scatt_button = st.button("Construir diagrama")
+scatt_button = st.button("Construir diagrama de dispersión")
 
 if scatt_button: 
     st.write("Creación de un diagrama para el promedio de precios según modelo")
-    
-    fig2=px.scatter(prices,title="Promedio de precios por modelo</b><br><sup>Autos enlistados</sup>")
+    mean_price= car_data.pivot_table(index="model_year", columns="transmission", values="price",aggfunc="mean")
+    fig2=px.scatter(mean_price,
+                    title="Precio promedio v/s año del modelo según transmisión</b><br><sup>Autos enlistados</sup>")
     fig2.update_xaxes(title_text="")
     fig2.update_yaxes(title_text="")
-    fig2.update_layout(showlegend=False)
     fig2.show()
     # mostrar un gráfico Plotly interactivo
     st.plotly_chart(fig2, use_container_width=True)
