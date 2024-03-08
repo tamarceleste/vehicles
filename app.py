@@ -12,7 +12,9 @@ if hist_button: # al hacer clic en el botón
             
     # crear un histograma
   
-    fig = px.histogram(car_data, x="model", y="price", histfunc='avg')
+    fig = px.histogram(car_data, x="model_year",title="Distribución de modelos de los autos</b><br><sup>Autos enlistados</sup>")
+    fig.update_xaxes(title_text="")
+    fig.update_yaxes(title_text="")
     fig.show()
         
     # mostrar un gráfico Plotly interactivo
@@ -30,4 +32,4 @@ if scatt_button:
     fig2.update_layout(showlegend=False)
     fig2.show()
     # mostrar un gráfico Plotly interactivo
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig2, use_container_width=True)
