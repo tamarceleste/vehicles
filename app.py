@@ -4,8 +4,12 @@ import streamlit as st
         
 car_data = pd.read_csv(r'C:\Users\tamar\OneDrive\Documentos\Data_Science\Sprint 5\vehicles\vehicles_us.csv') # leer los datos
 
-st.header(" Bienvenidos a mi primera aplicación web")
-st.title("¡Vamos a crear algunos gráficos!")
+st.header(" Bienvenidos a mi primera aplicación web")#primer título
+st.title("¡Vamos a crear algunos gráficos!")#título principal
+
+st.markdown("En base a la siguiente lista de automóviles a la venta:")
+st.write(car_data)#muestra la lista de datos
+
 hist_button = st.button('Construir histograma') # crear un botón
 show_hist = st.checkbox("Mostrar histograma")#crear una casilla
         
@@ -31,10 +35,9 @@ if scatt_button: #al hacer click en el botón
         #crear un gráfico de dispersión
         mean_price= car_data.pivot_table(index="model_year", columns="transmission", values="price",aggfunc="mean")
         fig2=px.scatter(mean_price,
-                    title="Precio promedio v/s año del modelo según transmisión</b><br><sup>Autos enlistados</sup>")
-        fig2.update_xaxes(title_text="")
-        fig2.update_yaxes(title_text="")
+                    title="Precio promedio v/s año del modelo</b><br><sup>Según tipo de transmisión</sup>")
+        fig2.update_xaxes(title_text="Año del modelo")
+        fig2.update_yaxes(title_text="Precio promedio")
         fig2.show()
         # se muestra un gráfico Plotly interactivo
         st.plotly_chart(fig2, use_container_width=True)
-
