@@ -37,7 +37,7 @@ if scatt_button: #al hacer click en el botón
         fig2=px.scatter(mean_price,
                     title="Precio promedio v/s año del modelo</b><br><sup>Según tipo de transmisión</sup>")
         fig2.update_xaxes(title_text="Año del modelo")
-        fig2.update_yaxes(title_text="Precio promedio")
+        fig2.update_yaxes(title_text="Precio promedio (dólares)")
         fig2.show()
         # se muestra un gráfico Plotly interactivo
         st.plotly_chart(fig2, use_container_width=True)
